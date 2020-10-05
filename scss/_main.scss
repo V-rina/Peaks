@@ -1,0 +1,228 @@
+body{
+	margin:0;
+	background: $bckgColor;
+}
+
+@mixin buttonjoin {
+	background: $btnColor;
+	margin:auto;
+	font:{
+		family: 'Source Sans Pro', sans-serif;
+		weight: 900;
+		size: 20px;
+		}
+	color: $btnText;
+	border: none;
+	border-radius: 5%;
+	height: 50px;
+	width: 140px;
+	cursor:pointer;
+	&:focus{
+		outline:none;
+	}
+}
+
+@mixin sectionlink{
+	font-family:'Hind', sans-serif;
+	font-size:15px;
+	color: $sectionText;
+}
+
+%highlight_text{
+	content:'';
+	height:50px;
+	position:absolute;
+	z-index:-1;
+	background:$higlightText;
+	left:0;
+}
+
+%logo{
+	font-family:$headerFont;
+	font-size:24px;
+	font-weight: 600;
+    line-height: 1.2;
+    color:map-get($colors, "headerColor");
+	display:inline-block;
+	padding-left:10px;
+	text-align:center;
+	text-transform:uppercase;
+	vertical-align:middle;
+}
+
+%logotagline{
+	display:block;
+	text-transform:none;
+	font-size: 10px;
+	line-height: 1;
+}
+
+.header{
+	background:$bcgrndImage;
+	background-size:cover;
+	border-radius: 0 0 35% 0% / 30%;
+		.header-wrap{
+			padding:0 20px;
+			color:map-get($colors, "mainColor");
+				.landing-logo{
+					p{
+						@extend %logo;
+					  span{
+					    @extend %logotagline;
+					  }
+					}
+					>img{
+				   	    vertical-align:middle;
+				    }
+				}
+			.header_button{
+    			@include buttonjoin;
+				margin-bottom: 170px;
+			}
+			.header_heading{
+			    max-width:500px;
+			    margin:50px 0;
+			    position:relative;
+			    z-index:5;
+				font-family:$mainFont ;
+				font-size:72px;
+				font-weight:900;
+				
+
+				&:before{
+					@extend %highlight_text;
+						width:300px;
+						top:120px;
+				}
+			}
+
+			.header_text{
+				max-width:650px;
+				margin:50px 0;
+				font-family:$headerFont;
+				font-size:16px;
+			}
+			.login{
+				margin-left:150px;
+				color:#ffffff;
+				font-size:20px;
+				font-family:$mainFont;
+			}
+		}
+	}
+
+main.section{
+    text-align: center;
+    max-width: 1200px;
+    margin:0 auto;
+    	.section_text{
+    		position:relative;
+    		font-family: $mainFont;
+    		font-size:40px;
+    		font-weight:bold;
+    		color:map-get($colors, "headerColor");
+    			&:before{
+    				@extend %highlight_text;
+    				left: 50%;
+    				width: 190px;
+    			}
+    	}
+    	.section_card_wrap{
+    		max-width: 1000px;
+    		margin:0 auto;
+    		.section_card{
+    			display:flex;
+    			align-items: center;
+    			margin:25px 0;
+    			padding:20px;
+    			background:$sectionColor;
+    			border-radius: 5px;
+    				.section_card_img{
+    					border-radius:inherit;
+    				}
+    				.section_card_right_container{
+	    				width: 450px;
+	    				margin: 0 auto;
+	    					.section_card_heading{
+	    						font-family:$mainFont;
+	    						font-size:20px;
+	    						color:#ffffff;
+	    						font-weight:600;
+	    					}
+	    					.section_card_text{
+	    						font-family:$headerFont;
+	    						font-size:15px;
+	    						color:#c0c3ce;
+	    						text-align: justify;
+	    					}
+	    					.section_link{
+			                  @include sectionlink;
+		                  }
+    				}
+    				.section_card_img{
+    					width: 390px;
+    					height: 260px;
+    				}
+    		}
+    	}
+    	.section_banner{
+    		margin: 0 25px;
+    		display:flex;
+    		position: relative;
+    		z-index: 1;
+   			top: 70px;
+   			border-radius:5px;
+    		background:	$bannerGradient;
+    			.section_banner_text_wrap{
+    				margin:auto;
+    				text-align: left;
+    				.section_banner_heading{
+    					position:relative;
+    					font-size: 30px;
+    					color: #2c2f3c;
+    					font-weight: 600;
+    					font-family:$headerFont;
+    					&:after{
+    						@extend %highlight_text;
+    						width: 65px;
+    						left:30%;
+    						bottom: 0;
+    					}
+    				}
+    			    .section_banner_text{
+    					font-size: 16px;
+    					color:$sectionText;
+    				}
+    			}
+    			.section_banner_button{
+    					@include buttonjoin;
+					}
+    		}
+    	}
+
+.footer{
+background:$sectionColor;
+.footer-wrap{
+	display:flex;
+	justify-content: space-between;
+	padding: 100px 20px 0;
+	color:$sectionText;
+	font-family:$headerFont;
+    font-size: 15px;
+	.footer_logo.landing-logo{
+		>img{
+			 vertical-align:middle;
+		}
+		p{
+			@extend %logo;
+			color:#c0c3ce;
+				span{
+					@extend %logotagline;
+				}
+			}
+		}
+	}
+	.footer_text{
+		width: 330px;
+	}
+}
